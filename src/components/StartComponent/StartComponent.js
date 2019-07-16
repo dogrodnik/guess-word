@@ -1,7 +1,8 @@
 import React from 'react';
 
 class StartComponent extends React.Component {
-        render() {
+        
+    render() {
         if(this.props.start){
             console.log('gra włączona')
             return null

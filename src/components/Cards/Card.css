@@ -2,8 +2,9 @@
     height: 200px;
     width: 160px;
     font-size: 26px;
-    background-color: beige;
-    border: 3px solid red;
+    background-color: grey;
+    border: 5px solid orange;
+    border-radius: 10%;
     position: fixed;
 
     display: -webkit-box;
