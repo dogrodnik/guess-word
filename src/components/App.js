@@ -7,7 +7,6 @@ import React from 'react';
 import StartComponent from './StartComponent/StartComponent';
 import CategoryComponent from './CategoryComponent/CategoryComponent';
 import Cards from './Cards/Cards';
-import Animals from '../data/data';
 
 class App extends React.Component {
         constructor() {
@@ -20,10 +19,11 @@ class App extends React.Component {
         }
         startGame = () => this.setState({gameOn: true});
 
-        setCategory = (categoryType) => this.setState({
+        setCategory = (categoryType) => {
+                this.setState({
                 categoryChoosed: true,
                 categoryType: categoryType
-            });
+            })};
    
         render() {
             return (

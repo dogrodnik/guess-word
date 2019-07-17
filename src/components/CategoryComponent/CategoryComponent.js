@@ -20,8 +20,8 @@ class CategoryComponent extends React.Component {
                         </button>                   
                     </div>
                     <div className="item">
-                        <button className="ui orange button massive" onClick = {() =>this.props.setCategory('Flags') }>
-                            Flags
+                        <button className="ui orange button massive" onClick = {() =>this.props.setCategory('Countries') }>
+                            Countries
                         </button>                   
                     </div>
                 </div>

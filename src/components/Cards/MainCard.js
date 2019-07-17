@@ -5,7 +5,7 @@ class MainCard extends React.Component {
     render(){
             return (
             <div id='mainCard'>
-                {this.props.category}
+                {this.props.correctWord}
             </div>
             )
     };     

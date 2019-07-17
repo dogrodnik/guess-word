@@ -5,7 +5,7 @@ class Card extends React.Component {
     render(){
             return (
             <div id='card' style = {this.props.styles}>
-                Card 
+                {this.props.word}
             </div>
             )
     };     
