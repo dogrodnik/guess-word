@@ -5,7 +5,7 @@ class Card extends React.Component {
     render(){
             return (
             <div id='card' style = {this.props.styles}>
-                {this.props.word}
+                <img className= "ui medium image circular" src={this.props.srcc} />
             </div>
             )
     };     
