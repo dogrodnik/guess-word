@@ -5,7 +5,7 @@ class Card extends React.Component {
     render(){
             return (
             <div id='card' style = {this.props.styles}>
-                <img className= "ui medium image circular" src={this.props.srcc} />
+                <img className= "ui medium image circular" src={this.props.source} />
             </div>
             )
     };     

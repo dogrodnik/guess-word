@@ -59,7 +59,7 @@ class CategoryComponent extends React.Component {
             this.setState({
                 correctWord: correctWord,
                 wordsArray: shuffledArray
-            }, () => this.props.setCategory('Animals', this.state.correctWord, this.state.wordsArray))
+            }, () => this.props.setCategory(category, this.state.correctWord, this.state.wordsArray))
         }
         
     };
@@ -71,7 +71,7 @@ class CategoryComponent extends React.Component {
                 </div>
                 <div className="ui massive horizontal divided list" >
                     <div className="item">
-                        <button  className="ui orange button massive" onClick = {() =>this.props.setCategory('Colors') }>
+                        <button  className="ui orange button massive" onClick = {() =>this.getWords('Colors') }>
                             Colors
                         </button>
                     </div>
@@ -81,7 +81,7 @@ class CategoryComponent extends React.Component {
                         </button>                   
                     </div>
                     <div className="item">
-                        <button className="ui orange button massive" onClick = {() =>this.props.setCategory('Countries') }>
+                        <button className="ui orange button massive" onClick = {() =>this.getWords('Countries') }>
                             Countries
                         </button>                   
                     </div>
