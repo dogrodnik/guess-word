@@ -19,13 +19,13 @@ class Cards extends React.Component {
     render(){
         if(this.state.imagesArray.length === 4){
             return (
-            <div className= 'cards'>
-                <Card styles ={{left: 200,top: 200}} word = {1} source={this.state.imagesArray[0]} />
-                <Card styles ={{left: 200,bottom: 200}} word = {2} source={this.state.imagesArray[1]}  />
-                <MainCard correctWord = {this.props.correctWord}/>
-                <Card styles ={{right: 200,top: 200}} word = {3} source={this.state.imagesArray[2]}  />
-                <Card styles ={{right: 200,bottom: 200}} word = {4} source={this.state.imagesArray[3]}  />
-            </div>)
+                <div className= 'cards'>
+                    <Card styles ={{left: 200,top: 200}}  source={this.state.imagesArray[0]} categoryType={this.props.categoryType}/>
+                    <Card styles ={{left: 200,bottom: 200}}  source={this.state.imagesArray[1]} categoryType={this.props.categoryType}  />
+                    <MainCard correctWord = {this.props.correctWord}/>
+                    <Card styles ={{right: 200,top: 200}}  source={this.state.imagesArray[2]} categoryType={this.props.categoryType} />
+                    <Card styles ={{right: 200,bottom: 200}} source={this.state.imagesArray[3]} categoryType={this.props.categoryType}  />
+                </div>)
             } else {
                 return <div>Loading...</div>
             }

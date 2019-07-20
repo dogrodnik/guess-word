@@ -1,9 +1,11 @@
-//TODO:
-//-ogarnac API - pixabay - do pobierania obrazkow
+//TO DO:
 
-//-ZMIENIC RENDER TAK ABY NA POCZATKU NIE RENDROWALY  SIE WSZYSTKIE KOMPONENTY TYLKO PO KOLEJIIIIII
+//-zrobic dodawanie punktów
+//-wyświetlanie wyniku na koniec
 
-//przenisc renderowanie slow z cards do kategoriiiiiio
+
+
+
 import React from 'react';
 import axios from 'axios';
 import StartComponent from './StartComponent/StartComponent';
@@ -34,12 +36,18 @@ class App extends React.Component {
         getImages = async () => {
             console.log(this.state.wordsArray)
             let imagesArray = []
-            if (!this.state.wordsArray){
-                console.log('brak tabeli')
-            }
             for (let i = 0; i < 4; i++) {
-                const response = await axios.get(`https://pixabay.com/api/?key=${this.state.apiKEY}&q=${this.state.wordsArray[i]}&image_type=photo`)
-                imagesArray.push(response.data.hits[0].webformatURL)
+                if (this.state.categoryType === "Animals") {                       
+                    const response = await axios.get(`https://pixabay.com/api/?key=${this.state.apiKEY}&q=${this.state.wordsArray[i]}&image_type=photo`)
+                    imagesArray.push(response.data.hits[0].webformatURL)}
+                if (this.state.categoryType === "Countries") {
+                    const response = `https://www.countryflags.io/${this.state.wordsArray[i]}/flat/64.png`
+                    imagesArray.push(response)
+                }
+                if (this.state.categoryType === "Colors"){
+                    const response = this.state.wordsArray[i];
+                    imagesArray.push(response)
+                }
             }
             return imagesArray;
         }
@@ -49,14 +57,11 @@ class App extends React.Component {
             if (this.state.gameOn && this.state.categoryChoosed && this.state.categoryType)
                 {return (
                 <div className='game'>
-                    <StartComponent start={this.state.gameOn} startGame = {this.startGame}  />
-                    <CategoryComponent start={this.state.gameOn} category={this.state.categoryChoosed}  setCategory={this.setCategory} />
                     <Cards start={this.state.gameOn} category={this.state.categoryChoosed} categoryType={this.state.categoryType} getImages = {this.getImages} correctWord = {this.state.correctWord}  />
                 </div>)}
             if (this.state.gameOn){
                 return (
                 <div className='game'>
-                    <StartComponent start={this.state.gameOn} startGame = {this.startGame}  />
                     <CategoryComponent start={this.state.gameOn} category={this.state.categoryChoosed}  setCategory={this.setCategory} />
                 </div>)}
              else {

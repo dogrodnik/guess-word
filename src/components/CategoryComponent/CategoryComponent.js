@@ -35,7 +35,7 @@ class CategoryComponent extends React.Component {
                 dataArray = Colors;
                 break;
             case 'Countries':
-                dataArray = Countries;
+                dataArray = Countries.getNames();
                 break;
             default:
                 console.log('ERROR NO CATEGORY');
@@ -44,12 +44,22 @@ class CategoryComponent extends React.Component {
         let wordsArray = []
         let correctIndex = Math.floor(Math.random() * dataArray.length);
         let correctWord = dataArray[correctIndex];
-        wordsArray.push(correctWord);
+        if (category === 'Countries') {
+            const { getCode } = require('country-list');
+                const correctWordShortcut = getCode(correctWord);
+                wordsArray.push(correctWordShortcut);
+            } else {
+                wordsArray.push(correctWord)
+            }
         dataArray.splice(correctIndex, 1)
         //GETTING RANDOM WORDS
         for (let i = 0; i < 3; i++) {
             let randomNumber = Math.floor(Math.random() * dataArray.length)
             let randomWord = dataArray[randomNumber];
+            if (category === 'Countries') {
+                const { getCode } = require('country-list');
+                randomWord = getCode(randomWord)
+            }
             dataArray.splice(randomNumber, 1);
             wordsArray.push(randomWord);
         }
@@ -63,6 +73,7 @@ class CategoryComponent extends React.Component {
         }
         
     };
+    
     render() {
         if (this.props.start && !this.props.category) {
             return (<div id="category-component">
