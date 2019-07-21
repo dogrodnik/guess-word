@@ -8,12 +8,12 @@ class Card extends React.Component {
             let color =  {backgroundColor: this.props.source, height: "200px", width: "120px"}
             let newStyle = {...this.props.styles, ...color};
             return (
-                <div id='card' style = {newStyle} >
+                <div id='card' style = {newStyle} onClick={ () => this.props.updateScore(this.props.word, this.props.categoryType) } >
                     Color
                 </div>)
         } else {
             return (
-                <div id='card' style = {this.props.styles}>
+                <div id='card' style = {this.props.styles} onClick={ () => this.props.updateScore(this.props.word, this.props.categoryType) }>
                     <img className= {this.props.categoryType === "Countries" ? "ui small image" : "ui medium image circular"} src={this.props.source} />
                 </div>
             )
@@ -21,8 +21,11 @@ class Card extends React.Component {
     };
 
     render(){
-        return <div> 
-        {this.getCard()}</div>
+        return (
+        <div> 
+            {this.getCard()}
+        </div>
+        )
     };     
 }
 
