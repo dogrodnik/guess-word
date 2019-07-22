@@ -1,15 +1,20 @@
 //TO DO:
+//ogarnac RWD zeby dzialala na telefon
 //-zmienic sposob wyswietlania apki
 //-wyświetlanie wyniku na koniec
+//-zmienic wyswietlanie buutoonow w kategoir na pionowe 
 
 import React from 'react';
 import axios from 'axios';
+import './styles.css'
 import Animals from '../data/Animals';
 import Colors from '../data/Colors';
 import Countries from '../data/Countries';
 import StartComponent from './StartComponent/StartComponent';
 import CategoryComponent from './CategoryComponent/CategoryComponent';
+import EndComponent from './EndComponent/EndComponent';
 import Cards from './Cards/Cards';
+
 
 class App extends React.Component {
         constructor() {
@@ -20,6 +25,7 @@ class App extends React.Component {
                 categoryType: null,
                 apiKEY: "13065829-4a687870cfa2bcfed99bf7395",
                 score: 0,
+                attempts: 0,
                 imagesArray: []
             }
         }
@@ -30,7 +36,7 @@ class App extends React.Component {
             let imagesArray = []
             for (let i = 0; i < 4; i++) {
                 if (this.state.categoryType === "Animals") {                       
-                    const response = await axios.get(`https://pixabay.com/api/?key=${this.state.apiKEY}&q=${this.state.wordsArray[i]}&image_type=photo`)
+                    const response = await axios.get(`https://pixabay.com/api/?key=${this.state.apiKEY}&q=${this.state.wordsArray[i]}&image_type=photo&category=animals`)
                     imagesArray.push(response.data.hits[0].webformatURL)}
                 if (this.state.categoryType === "Countries") {
                     const response = `https://www.countryflags.io/${this.state.wordsArray[i]}/flat/64.png`
@@ -105,20 +111,32 @@ class App extends React.Component {
         };
 
         updateScore = async (word, category) => {
-            if(word == this.state.correctWord){
+            if (category === "Countries"){
+                const { getName } = require('country-list');
+                word = await getName(word);
+            }
+            if(word === this.state.correctWord){
                 this.setState({
-                    score: this.state.score+1
+                    score: this.state.score+1,
+                    attempts: this.state.attempts+1
                 })
             } else {
                 this.setState({
-                    score: this.state.score
+                    score: this.state.score,
+                    attempts: this.state.attempts + 1
                 })
-            } 
+            }
             await this.getWords(category)
             await this.getImages(); 
         }
         render() {
             console.log('renderowanie calej apki')
+            if (this.state.attempts === 2){
+                return <EndComponent 
+                    score = {this.state.score}
+                    attempts = {this.state.attempts}
+                />
+            }
             if (this.state.gameOn && this.state.categoryChoosed && this.state.categoryType)
                 {return (
                 <div className='game'>

@@ -4,7 +4,7 @@ import './MainCard.css'
 class MainCard extends React.Component {
     render(){
             return (
-            <div id='mainCard'>
+            <div className ={this.props.clas} id='mainCard'>
                 {this.props.correctWord}
             </div>
             )
