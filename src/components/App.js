@@ -1,7 +1,6 @@
 //TO DO:
 //ogarnac RWD zeby dzialala na telefon
 //-zmienic sposob wyswietlania apki
-//-wyświetlanie wyniku na koniec
 //-zmienic wyswietlanie buutoonow w kategoir na pionowe 
 
 import React from 'react';
@@ -9,7 +8,7 @@ import axios from 'axios';
 import './styles.css'
 import Animals from '../data/Animals';
 import Colors from '../data/Colors';
-import Countries from '../data/Countries';
+import Flags from '../data/Flags';
 import StartComponent from './StartComponent/StartComponent';
 import CategoryComponent from './CategoryComponent/CategoryComponent';
 import EndComponent from './EndComponent/EndComponent';
@@ -26,6 +25,7 @@ class App extends React.Component {
                 apiKEY: "13065829-4a687870cfa2bcfed99bf7395",
                 score: 0,
                 attempts: 0,
+                totalAttempts: 10,
                 imagesArray: []
             }
         }
@@ -38,7 +38,7 @@ class App extends React.Component {
                 if (this.state.categoryType === "Animals") {                       
                     const response = await axios.get(`https://pixabay.com/api/?key=${this.state.apiKEY}&q=${this.state.wordsArray[i]}&image_type=photo&category=animals`)
                     imagesArray.push(response.data.hits[0].webformatURL)}
-                if (this.state.categoryType === "Countries") {
+                if (this.state.categoryType === "Flags") {
                     const response = `https://www.countryflags.io/${this.state.wordsArray[i]}/flat/64.png`
                     imagesArray.push(response)
                 }
@@ -71,8 +71,8 @@ class App extends React.Component {
                 case 'Colors':
                     dataArray = Colors;
                     break;
-                case 'Countries':
-                    dataArray = Countries.getNames();
+                case 'Flags':
+                    dataArray = Flags.getNames();
                     break;
                 default:
                     console.log('ERROR NO CATEGORY');
@@ -81,7 +81,7 @@ class App extends React.Component {
             let wordsArray = []
             let correctIndex = Math.floor(Math.random() * dataArray.length);
             let correctWord = dataArray[correctIndex];
-            if (category === 'Countries') {
+            if (category === 'Flags') {
                 const { getCode } = require('country-list');
                     const correctWordShortcut = getCode(correctWord);
                     wordsArray.push(correctWordShortcut);
@@ -93,7 +93,7 @@ class App extends React.Component {
             for (let i = 0; i < 3; i++) {
                 let randomNumber = Math.floor(Math.random() * dataArray.length)
                 let randomWord = dataArray[randomNumber];
-                if (category === 'Countries') {
+                if (category === 'Flags') {
                     const { getCode } = require('country-list');
                     randomWord = getCode(randomWord)
                 }
@@ -111,7 +111,7 @@ class App extends React.Component {
         };
 
         updateScore = async (word, category) => {
-            if (category === "Countries"){
+            if (category === "Flags"){
                 const { getName } = require('country-list');
                 word = await getName(word);
             }
@@ -129,12 +129,25 @@ class App extends React.Component {
             await this.getWords(category)
             await this.getImages(); 
         }
+        playAgain = () => {
+            this.setState({
+                gameOn: true,
+                categoryChoosed: false,
+                categoryType: null,
+                apiKEY: "13065829-4a687870cfa2bcfed99bf7395",
+                score: 0,
+                attempts: 0,
+                imagesArray: []
+            })
+        };
+        
         render() {
             console.log('renderowanie calej apki')
-            if (this.state.attempts === 2){
+            if (this.state.attempts === this.state.totalAttempts){
                 return <EndComponent 
                     score = {this.state.score}
                     attempts = {this.state.attempts}
+                    playAgain = {this.playAgain}
                 />
             }
             if (this.state.gameOn && this.state.categoryChoosed && this.state.categoryType)

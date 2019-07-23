@@ -15,11 +15,11 @@ class StartComponent extends React.Component {
                     <p>Click start</p>
                     <p>Choose category</p>
                     <p>Next you will see a word and four options. Try to choose the correct one.</p>
+                    <p>You have 10 attempts.</p>
+                    <p><b>GOOD LUCK!</b></p>
                 </Modal.Description>
                 </Modal.Content>
-            </Modal>
-        
-        
+            </Modal>  
         </div>
         )
     }

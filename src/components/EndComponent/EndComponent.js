@@ -17,7 +17,7 @@ class EndComponent extends React.Component {
                 </div>
             </div>
             <div className = "sixteen wide column center aligned">
-                <button  className="ui orange button massive">
+                <button  className="ui orange button massive" onClick = {this.props.playAgain}>
                     Play again
                 </button>
             </div>

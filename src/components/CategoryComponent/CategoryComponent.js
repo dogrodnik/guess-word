@@ -1,5 +1,4 @@
 import React from 'react';
-import './CategoryComponent.css';
 
 class CategoryComponent extends React.Component {
     getData = async (word) => {
@@ -8,25 +7,23 @@ class CategoryComponent extends React.Component {
     }
 
     render() {
-            return (<div id="category-component">
-                <div className="ui centered orange inverted header"> 
-                    Choose category
+            return (<div className ="ui grid" >
+                <div className = "sixteen wide column center aligned"> 
+                    <div className = 'ui centered orange inverted header' style = {{fontSize: "2.75em"}}>
+                        Choose category
+                    </div>
                 </div>
-                <div className="ui massive horizontal divided list" >
-                    <div className="item">
-                        <button  className="ui orange button massive" onClick = {async () =>await this.getData('Colors') }>
-                            Colors
-                        </button>
-                    </div>
-                    <div className="item">
-                        <button className="ui orange button massive" onClick = {async () => await this.getData('Animals') }>
-                            Animals
-                        </button>                   
-                    </div>
-                    <div className="item">
-                        <button className="ui orange button massive" onClick = {async () => await this.getData('Countries') }>
-                            Countries
-                        </button>                   
+                <div className = "sixteen wide column center aligned">
+                    <div className="ui vertical buttons" >
+                            <button  className="ui orange button massive" onClick = {async () =>await this.getData('Colors') }>
+                                Colors
+                            </button>
+                            <button className="ui orange button massive" onClick = {async () => await this.getData('Animals') }>
+                                Animals
+                            </button>                   
+                            <button className="ui orange button massive" onClick = {async () => await this.getData('Flags') }>
+                                Flags
+                            </button>                   
                     </div>
                 </div>
             </div>)
