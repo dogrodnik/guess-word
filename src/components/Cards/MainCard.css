@@ -10,8 +10,9 @@
     height: 100px;
     width: 100%;
     font-size: 26px;
-    background-color: grey;
-    border: 5px solid black;
+    color: white;
+    border: 5px solid white;
+    background-color:rgb(242, 113, 28);
+    border-radius: 5px;
     box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-    border-radius: 5%;
 }

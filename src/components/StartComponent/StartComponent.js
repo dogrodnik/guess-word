@@ -4,7 +4,7 @@ import { Button, Modal } from 'semantic-ui-react'
 class StartComponent extends React.Component {
     render() {
         return (
-        <div className="ui vertical buttons">
+        <div className="ui vertical buttons" >
             <button onClick = {this.props.startGame} className="ui orange button massive">
                 Start
             </button>

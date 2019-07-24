@@ -5,11 +5,11 @@ class Card extends React.Component {
         switch (category) {
                 case 'Colors':
                     return(
-                        {backgroundColor: this.props.source, width: "120px", height: "200px", border: "5px solid black", borderRadius: "5%", boxShadow: "10px 10px 5px 0px rgba(0, 0, 0, 0.75)", margin: "10px" }
+                        {backgroundColor: this.props.source, width: "120px", minHeight:"120px" ,height: "auto", border: "5px solid black", borderRadius: "5%", boxShadow: "10px 10px 5px 0px rgba(0, 0, 0, 0.75)", margin: "10px" }
                     )
                 case 'Animals':
                     return(
-                        {height: "200px", margin: "10px"}
+                        {height: "auto", margin: "10px", maxHeight: "200px"}
                     )               
                 default:        
                     console.log('No category');
@@ -26,7 +26,7 @@ class Card extends React.Component {
                 )
         } else {
             return (
-                <div className ="ui grid center aligned"  onClick={ () => this.props.updateScore(this.props.word, this.props.categoryType) }>>
+                <div className ="ui grid center aligned"  onClick={ () => this.props.updateScore(this.props.word, this.props.categoryType) }>
                     <img alt={this.props.word}  className = {this.props.categoryType === "Flags" ? "ui small image" : "ui medium circular image"} style = {this.getStyle(this.props.categoryType)} src={this.props.source} />
                 </div>
             )

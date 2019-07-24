@@ -4,7 +4,7 @@ import './MainCard.css'
 class MainCard extends React.Component {
     render(){
             return (
-            <div className ="sixteen wide column" id='mainCard'>
+            <div className ="sixteen wide column" id="mainCard">
                 {this.props.correctWord}
             </div>
             )
