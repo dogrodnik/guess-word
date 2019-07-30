@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/guess-word/static/css/main.6b2481a3.chunk.css",
+    "main.js": "/guess-word/static/js/main.5c0953d4.chunk.js",
+    "main.js.map": "/guess-word/static/js/main.5c0953d4.chunk.js.map",
+    "runtime~main.js": "/guess-word/static/js/runtime~main.c2fffbc3.js",
+    "runtime~main.js.map": "/guess-word/static/js/runtime~main.c2fffbc3.js.map",
+    "static/js/2.4eff2e9f.chunk.js": "/guess-word/static/js/2.4eff2e9f.chunk.js",
+    "static/js/2.4eff2e9f.chunk.js.map": "/guess-word/static/js/2.4eff2e9f.chunk.js.map",
+    "index.html": "/guess-word/index.html",
+    "precache-manifest.39bb720620b8c7c4dc0fcbbebcc14f41.js": "/guess-word/precache-manifest.39bb720620b8c7c4dc0fcbbebcc14f41.js",
+    "service-worker.js": "/guess-word/service-worker.js",
+    "static/css/main.6b2481a3.chunk.css.map": "/guess-word/static/css/main.6b2481a3.chunk.css.map"
+  }
+}
