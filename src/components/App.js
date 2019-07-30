@@ -26,7 +26,6 @@ class App extends React.Component {
     startGame = () => this.setState({gameOn: true});
 
     getImages = async () => {
-        console.log(this.state.wordsArray)
         let imagesArray = []
         for (let i = 0; i < 4; i++) {
             if (this.state.categoryType === "Animals") {                       
@@ -101,7 +100,7 @@ class App extends React.Component {
                 categoryType: category,
                 correctWord: correctWord,
                 wordsArray: shuffledArray
-            }, () => console.log(this.state.gameOn, this.state.categoryChoosed, this.state.categoryType ) )               
+            })               
     };
 
     updateScore = async (word, category) => {
@@ -136,7 +135,6 @@ class App extends React.Component {
     };
     
     render() {
-        console.log('renderowanie calej apki')
         if (this.state.attempts === this.state.totalAttempts){
             return <EndComponent 
                 score = {this.state.score}

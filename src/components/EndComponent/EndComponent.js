@@ -22,8 +22,8 @@ class EndComponent extends React.Component {
                 </button>
             </div>
         </div>
-        )
-    }
-}
+        );
+    };
+};
 
 export default EndComponent;

@@ -12,18 +12,15 @@ class StartComponent extends React.Component {
                 <Modal.Header>How to play?</Modal.Header>
                 <Modal.Content image>
                 <Modal.Description>
-                    <p>Click start</p>
-                    <p>Choose category</p>
-                    <p>Next you will see a word and four options. Try to choose the correct one.</p>
-                    <p>You have 10 attempts.</p>
+                    <p>Click start. Choose category. Next you will see a word and four options. Try to choose the correct one. You have 10 attempts. </p>
                     <p><b>GOOD LUCK!</b></p>
                 </Modal.Description>
                 </Modal.Content>
             </Modal>  
         </div>
-        )
-    }
-}
+        );
+    };
+};
 
 export default StartComponent;
 

@@ -12,7 +12,6 @@ class Card extends React.Component {
                         {height: "auto", margin: "10px", maxHeight: "200px"}
                     )               
                 default:        
-                    console.log('No category');
                 }
     }
 
