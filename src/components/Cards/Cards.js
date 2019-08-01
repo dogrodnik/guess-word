@@ -1,6 +1,7 @@
 import React from 'react';
 import MainCard from './MainCard'
 import Card from './Card';
+import Score from './Score';
 
 class Cards extends React.Component {
     render(){
@@ -17,20 +18,11 @@ class Cards extends React.Component {
                         <MainCard correctWord = {this.props.correctWord}/>
                     </div>
                     <div className="ui grid">
-                        <div className="sixteen wide column center aligned">
-                            <div className="ui statistic center" style = {{border: "5px solid white", padding: "10px", backgroundColor: "rgb(242, 113, 28)", boxShadow: "10px 10px 5px 0px rgba(0, 0, 0, 0.75)"}}>
-                                <div className="value" style={{color: "white"}}>
-                                    {this.props.score}
-                                </div>
-                                <div className="label" style={{color: "white"}}>
-                                    Score
-                                </div>
-                            </div>
-                        </div>
+                        <Score score={this.props.score} />
                     </div>
                 </div>)
             } else {
-                return <div>Loading...</div>
+                return <div class="ui active inline loader"></div>
             }
     };
 }

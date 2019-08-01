@@ -1,4 +1,5 @@
 import React from 'react';
+import Img from 'react-image';
 
 class Card extends React.Component {
     getStyle = (category) => {
@@ -26,7 +27,23 @@ class Card extends React.Component {
         } else {
             return (
                 <div className ="ui grid center aligned"  onClick={ () => this.props.updateScore(this.props.word, this.props.categoryType) }>
-                    <img alt={this.props.word}  className = {this.props.categoryType === "Flags" ? "ui small image" : "ui medium circular image"} style = {this.getStyle(this.props.categoryType)} src={this.props.source} />
+                    <Img 
+                        alt={this.props.word}
+                        className = {this.props.categoryType === "Flags" ? "ui small image" : "ui medium circular image"} 
+                        style = {this.getStyle(this.props.categoryType)} 
+                        src={this.props.source} 
+                        loader={
+                                <div className="ui grid">
+                                    <div className="sixteen wide column center aligned">
+                                        <div className="ui statistic center">
+                                            <div className = "value"> 
+                                                <div className="ui active inline loader"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                } 
+                    />
                 </div>
             )
         }
